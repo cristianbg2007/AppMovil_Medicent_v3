@@ -4,6 +4,7 @@ import 'package:mobile_medicent_v3/features/auth/services/auth_service.dart';
 import 'package:mobile_medicent_v3/features/auth/screens/login_screen.dart';
 import 'package:mobile_medicent_v3/features/tomas/screens/tomas_screen.dart';
 import 'package:mobile_medicent_v3/features/tratamientos/screens/tratamientos_screen.dart';
+import 'package:mobile_medicent_v3/features/cuidador/screens/pacientes_asignados_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -155,8 +156,10 @@ class HomeScreen extends StatelessWidget {
                 title: 'Pacientes Asignados',
                 subtitle: 'Supervisa el cumplimiento y tomas de tus pacientes.',
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Módulo Cuidador: en desarrollo')),
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => PacientesAsignadosScreen(cuidador: usuario),
+                    ),
                   );
                 },
               ),
