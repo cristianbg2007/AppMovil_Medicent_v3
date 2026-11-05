@@ -3,6 +3,7 @@ import 'package:mobile_medicent_v3/features/auth/models/usuario_model.dart';
 import 'package:mobile_medicent_v3/features/auth/services/auth_service.dart';
 import 'package:mobile_medicent_v3/features/auth/screens/login_screen.dart';
 import 'package:mobile_medicent_v3/features/tomas/screens/tomas_screen.dart';
+import 'package:mobile_medicent_v3/features/tratamientos/screens/tratamientos_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -139,8 +140,10 @@ class HomeScreen extends StatelessWidget {
                 title: 'Mis Tratamientos Activos',
                 subtitle: 'Consulta tus recetas, frecuencias y dosis prescritas.',
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Módulo de Tratamientos: en desarrollo')),
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => TratamientosScreen(usuario: usuario),
+                    ),
                   );
                 },
               ),
