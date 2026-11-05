@@ -14,13 +14,18 @@ class UsuarioModel {
   });
 
   // Traduce la respuesta JSON de Flask a un objeto de Flutter
-  factory UsuarioModel.fromJson(Map<String, dynamic> json) {
+  factory UsuarioModel.fromJson(Map<String, dynamic> json, {String? correoFallback}) {
+    // Flask puede devolver el usuario anidado en 'usuario' o directamente en la raíz
+    final Map<String, dynamic> data = (json['usuario'] is Map<String, dynamic>)
+        ? json['usuario'] as Map<String, dynamic>
+        : json;
+
     return UsuarioModel(
-      id: json['id'] != null ? int.tryParse(json['id'].toString()) ?? 0 : 0,
-      nombre: json['nombre'] as String? ?? '',
-      correo: json['correo'] as String? ?? '',
-      rol: json['rol'] as String? ?? '',
-      token: json['token'] as String?,
+      id: data['id'] != null ? int.tryParse(data['id'].toString()) ?? 0 : 0,
+      nombre: data['nombre'] as String? ?? '',
+      correo: (data['correo'] as String?) ?? (correoFallback ?? ''),
+      rol: (data['rol'] as String?)?.toLowerCase().trim() ?? '',
+      token: (json['token'] ?? data['token']) as String?,
     );
   }
 

@@ -52,8 +52,8 @@ class AuthService {
       if (respuesta.statusCode == 200) {
         final Map<String, dynamic> datos = jsonDecode(respuesta.body);
         print('Respuesta exitosa de Flask: $datos');
-        final usuario = UsuarioModel.fromJson(datos);
-        print('Usuario parseado: ${usuario.nombre}, id: ${usuario.id}, rol: ${usuario.rol}');
+        final usuario = UsuarioModel.fromJson(datos, correoFallback: correo);
+        print('Usuario parseado -> Nombre: "${usuario.nombre}", Rol: "${usuario.rol}", Correo: "${usuario.correo}"');
         await guardarSesion(usuario);
         return usuario;
       }

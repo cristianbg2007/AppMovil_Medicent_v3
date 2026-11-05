@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_medicent_v3/features/auth/models/usuario_model.dart';
 import 'package:mobile_medicent_v3/features/auth/services/auth_service.dart';
 import 'package:mobile_medicent_v3/features/auth/screens/login_screen.dart';
+import 'package:mobile_medicent_v3/features/tomas/screens/tomas_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -124,9 +125,10 @@ class HomeScreen extends StatelessWidget {
                 title: 'Mis Tomas de Hoy',
                 subtitle: 'Revisa tus medicamentos programados y confirma tus dosis.',
                 onTap: () {
-                  // Conectaremos con tomas_hoy_screen en el siguiente paso
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Módulo de Tomas: en desarrollo')),
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => TomasScreen(usuario: usuario),
+                    ),
                   );
                 },
               ),
