@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mobile_medicent_v3/core/api/api_endpoints.dart';
 import 'package:mobile_medicent_v3/core/api/api_client.dart';
+import 'package:mobile_medicent_v3/features/auth/screens/login_screen.dart';
 
 void main() {
   runApp(const MedicentApp());
@@ -19,7 +20,7 @@ class MedicentApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0D9488)),
         useMaterial3: true,
       ),
-      home: const EstadoBackendScreen(),
+      home: const LoginScreen(),
     );
   }
 }

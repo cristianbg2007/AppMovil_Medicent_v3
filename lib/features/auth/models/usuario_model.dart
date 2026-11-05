@@ -16,7 +16,7 @@ class UsuarioModel {
   // Traduce la respuesta JSON de Flask a un objeto de Flutter
   factory UsuarioModel.fromJson(Map<String, dynamic> json) {
     return UsuarioModel(
-      id: json['id'] as int,
+      id: json['id'] != null ? int.tryParse(json['id'].toString()) ?? 0 : 0,
       nombre: json['nombre'] as String? ?? '',
       correo: json['correo'] as String? ?? '',
       rol: json['rol'] as String? ?? '',
